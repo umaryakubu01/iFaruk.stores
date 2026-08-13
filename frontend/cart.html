@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Cart — iFaruk.Stores</title>
+<meta name="description" content="Review your cart and place your order via WhatsApp with iFaruk.Stores.">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/components.css">
+<link rel="stylesheet" href="css/pages.css">
+<link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to content</a>
+
+<header class="site-header">
+  <div class="container site-header__inner">
+    <a href="index.html" class="brand">iFaruk<span>.Stores</span></a>
+    <nav class="main-nav" aria-label="Primary">
+      <div class="main-nav__links">
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </nav>
+    <div class="header-actions">
+      <a href="cart.html" class="icon-btn" aria-label="View cart" aria-current="page">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"></path></svg>
+        <span class="cart-count" data-cart-count>0</span>
+      </a>
+      <button class="hamburger" data-nav-open aria-label="Open menu" aria-expanded="false"><span></span></button>
+    </div>
+  </div>
+</header>
+
+<nav class="mobile-nav" data-mobile-nav aria-label="Mobile">
+  <div class="mobile-nav__top">
+    <span class="brand">iFaruk<span>.Stores</span></span>
+    <button class="hamburger" data-nav-close aria-label="Close menu"><span></span></button>
+  </div>
+  <div class="mobile-nav__links">
+    <a href="index.html">Home</a>
+    <a href="shop.html">Shop</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="cart.html">Cart</a>
+  </div>
+</nav>
+
+<main id="main">
+  <div class="container page-banner">
+    <h1>Your Cart</h1>
+    <div class="checkout-steps" data-checkout-progress>
+      <span class="is-active"></span>
+      <span></span>
+    </div>
+  </div>
+
+  <section class="section--tight container" data-cart-root>
+
+    <!-- Step 1: Cart review -->
+    <div data-step-cart>
+      <div class="cart-layout">
+        <div data-cart-list></div>
+        <aside class="order-summary" data-cart-summary></aside>
+      </div>
+    </div>
+
+    <!-- Step 2: Customer details / checkout -->
+    <div data-step-checkout hidden>
+      <div class="cart-layout">
+        <div>
+          <button type="button" class="btn btn-secondary btn-sm" data-back-to-cart style="margin-bottom:24px;">&larr; Back to Cart</button>
+          <h3 style="margin-bottom:24px;">Delivery Details</h3>
+          <form data-checkout-form novalidate>
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="fullName">Full Name</label>
+                <input type="text" id="fullName" name="fullName" class="form-control" required autocomplete="name">
+                <p class="form-error" role="alert"></p>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" class="form-control" required autocomplete="tel">
+                <p class="form-error" role="alert"></p>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="deliveryLocation">Delivery Address</label>
+              <input type="text" id="deliveryLocation" name="deliveryLocation" class="form-control" required autocomplete="street-address">
+              <p class="form-error" role="alert"></p>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="state">State</label>
+                <input type="text" id="state" name="state" class="form-control" required autocomplete="address-level1">
+                <p class="form-error" role="alert"></p>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="city">City</label>
+                <input type="text" id="city" name="city" class="form-control" autocomplete="address-level2">
+                <p class="form-error" role="alert"></p>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="note">Additional Note (optional)</label>
+              <textarea id="note" name="note" class="form-control" placeholder="e.g. preferred delivery time"></textarea>
+              <p class="form-error" role="alert"></p>
+            </div>
+            <button type="submit" class="btn btn-whatsapp btn-block">Send Order via WhatsApp</button>
+            <p class="form-hint text-center" style="margin-top:14px;">Your order will be saved and you'll be redirected to WhatsApp to confirm with our team.</p>
+          </form>
+        </div>
+        <aside class="order-summary" data-checkout-order-summary></aside>
+      </div>
+    </div>
+
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="brand" style="color:#f6f3ec;">iFaruk<span>.Stores</span></a>
+        <p>Luxury watches and fashion accessories, for people who value lasting quality.</p>
+      </div>
+      <div>
+        <h5>Navigate</h5>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="shop.html">Shop</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Categories</h5>
+        <ul>
+          <li><a href="shop.html?category=">Men's Watches</a></li>
+          <li><a href="shop.html?category=">Women's Watches</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Contact</h5>
+        <ul>
+          <li><a href="https://wa.me/2347040699737" data-whatsapp-cta>WhatsApp Us</a></li>
+          <li><a href="mailto:lfarukone5@gmail.com">lfarukone5@gmail.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; <span data-year></span> iFaruk.Stores. All rights reserved.</span>
+      <span>Luxury Watches &amp; Fashion Accessories</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/config.js"></script>
+<script src="js/api.js"></script>
+<script src="js/cart.js"></script>
+<script src="js/main.js"></script>
+<script src="js/checkout.js"></script>
+<script src="js/whatsapp.js"></script>
+</body>
+</html>

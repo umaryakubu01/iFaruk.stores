@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Products — iFaruk.Stores Admin</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="../css/components.css">
+<link rel="stylesheet" href="../css/admin.css">
+</head>
+<body class="admin-body">
+
+<div class="admin-shell">
+  <aside class="admin-sidebar">
+    <div class="admin-sidebar__brand">iFaruk<span>.Stores</span></div>
+    <nav class="admin-nav" aria-label="Admin navigation">
+      <a href="dashboard.html">Dashboard</a>
+      <a href="products.html" aria-current="page">Products</a>
+      <a href="categories.html">Categories</a>
+      <a href="orders.html">Orders</a>
+    </nav>
+    <div class="admin-sidebar__footer">
+      <p class="admin-sidebar__admin-name">Signed in as <span data-admin-name>—</span></p>
+      <button type="button" class="btn btn-secondary btn-sm btn-block" data-admin-logout>Log Out</button>
+    </div>
+  </aside>
+
+  <main class="admin-main">
+    <div class="admin-topbar">
+      <h1>Products</h1>
+      <button type="button" class="btn btn-primary" data-add-product>+ Add Product</button>
+    </div>
+
+    <div class="admin-panel">
+      <div class="admin-toolbar">
+        <input type="search" class="form-control" placeholder="Search products..." aria-label="Search products" data-product-search style="max-width:280px;">
+        <select class="form-control" aria-label="Filter by category" data-filter-category style="max-width:220px;">
+          <option value="">All Categories</option>
+        </select>
+      </div>
+
+      <table class="admin-table" data-products-table>
+        <thead>
+          <tr><th>Image</th><th>Name</th><th>Category</th><th>Price</th><th>Stock</th><th>Status</th><th>Actions</th></tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+      <div class="admin-cards" data-products-cards></div>
+    </div>
+  </main>
+</div>
+
+<!-- Product create/edit modal -->
+<div class="modal-overlay" data-product-modal hidden>
+  <div class="modal" style="max-width:640px;text-align:left;max-height:90vh;overflow-y:auto;">
+    <div class="admin-panel__header" style="padding:0 0 20px;border:none;">
+      <h3 data-product-modal-title>Add Product</h3>
+      <button type="button" class="btn btn-secondary btn-sm" data-close-product-modal>Close</button>
+    </div>
+
+    <form data-product-form novalidate>
+      <div class="form-group">
+        <label class="form-label" for="product-name">Product Name</label>
+        <input type="text" id="product-name" name="name" class="form-control" required>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="product-description">Description</label>
+        <textarea id="product-description" name="description" class="form-control" required></textarea>
+      </div>
+
+      <div class="admin-form-grid">
+        <div class="form-group">
+          <label class="form-label" for="product-price">Price (₦)</label>
+          <input type="number" id="product-price" name="price" class="form-control" min="0" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="product-stock">Stock Quantity</label>
+          <input type="number" id="product-stock" name="stock" class="form-control" min="0" required>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="product-category">Category</label>
+        <select id="product-category" name="category" class="form-control" required>
+          <option value="">Select a category</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="product-images">Product Images</label>
+        <div class="image-upload-box" data-image-upload-box>
+          <input
+            type="file"
+            id="product-images"
+            name="images"
+            accept="image/jpeg,image/png,image/webp,image/avif"
+            multiple
+            hidden
+          >
+          <button type="button" class="image-upload-box__trigger" data-image-picker>
+            <span class="image-upload-box__icon" aria-hidden="true">＋</span>
+            <strong>Choose product images</strong>
+            <span>or drag and drop them here</span>
+            <small>JPG, PNG, WEBP or AVIF · Up to 10 images · 10 MB each</small>
+          </button>
+        </div>
+
+        <div class="image-preview-grid" data-image-preview-grid aria-live="polite"></div>
+
+        <p class="form-hint">
+          Select multiple images directly from your device. The first image will be used as the main product photo.
+          Images are securely uploaded to Cloudinary when you save the product.
+        </p>
+      </div>
+
+      <div class="admin-form-grid">
+        <div class="form-group">
+          <label class="form-label" for="product-variants">Variants (comma-separated)</label>
+          <input type="text" id="product-variants" name="variants" class="form-control" placeholder="e.g. 38mm, 42mm">
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="product-colors">Colors (comma-separated)</label>
+          <input type="text" id="product-colors" name="colors" class="form-control" placeholder="e.g. Gold, Silver">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="product-specs">Specifications (one per line, "Key: Value")</label>
+        <textarea id="product-specs" name="specifications" class="form-control" placeholder="Case Material: Stainless Steel&#10;Water Resistance: 100m"></textarea>
+      </div>
+
+      <div class="form-row">
+        <label class="filters__option"><input type="checkbox" name="featured"> Mark as Featured</label>
+        <label class="filters__option"><input type="checkbox" name="newArrival"> Mark as New Arrival</label>
+      </div>
+
+      <button type="submit" class="btn btn-primary btn-block" style="margin-top:12px;">Save Product</button>
+    </form>
+  </div>
+</div>
+
+<!-- Shared confirm modal -->
+<div class="modal-overlay" data-confirm-modal hidden>
+  <div class="modal">
+    <h3 data-confirm-title>Are you sure?</h3>
+    <p data-confirm-message></p>
+    <div class="row-actions" style="justify-content:center;">
+      <button type="button" class="btn btn-secondary" data-confirm-no>Cancel</button>
+      <button type="button" class="btn btn-danger" data-confirm-yes>Confirm</button>
+    </div>
+  </div>
+</div>
+
+<div id="toast-region"></div>
+
+<script src="../js/config.js"></script>
+<script src="../js/api.js"></script>
+<script src="../js/main.js"></script>
+<script src="../js/admin/admin-common.js"></script>
+<script src="../js/admin/products-admin.js"></script>
+</body>
+</html>

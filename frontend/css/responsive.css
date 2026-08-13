@@ -1,0 +1,182 @@
+/* ==========================================================================
+   iFaruk.Stores — Responsive rules
+   Mobile-first overrides applied at decreasing breakpoints.
+   ========================================================================== */
+
+/* ---- Tablets / small laptops ---- */
+@media (max-width: 1080px) {
+  .product-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .category-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .why-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    row-gap: 40px;
+  }
+
+  .shop-layout {
+    grid-template-columns: 220px 1fr;
+    gap: 32px;
+  }
+}
+
+/* ---- Tablets ---- */
+@media (max-width: 860px) {
+  .main-nav__links {
+    display: none;
+  }
+
+  .hamburger {
+    display: inline-flex;
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+    padding: 40px 0 64px;
+    gap: 36px;
+  }
+
+  .hero__content {
+    max-width: none;
+  }
+
+  .story,
+  .about-hero,
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .story__image,
+  .about-hero__image {
+    order: -1;
+  }
+
+  .shop-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .filters {
+    position: static;
+    border: 1px solid var(--color-line);
+    padding: 16px 20px;
+    margin-bottom: 28px;
+  }
+
+  .product-detail {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .cart-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .order-summary {
+    position: static;
+  }
+
+  .section {
+    padding: 64px 0;
+  }
+}
+
+/* ---- Mobile ---- */
+@media (max-width: 640px) {
+  .container {
+    padding: 0 18px;
+  }
+
+  h1 {
+    font-size: clamp(2.1rem, 9vw, 2.8rem);
+  }
+
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px 14px;
+  }
+
+  .category-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .why-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .values-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .whatsapp-band {
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .cart-item {
+    grid-template-columns: 84px 1fr;
+    row-gap: 12px;
+  }
+
+  .cart-item__image {
+    width: 84px;
+    height: 84px;
+  }
+
+  .cart-item__price {
+    grid-column: 1 / -1;
+    text-align: left;
+    border-top: 1px solid var(--color-line);
+    padding-top: 12px;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .gallery__thumbs {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .section-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .btn {
+    padding: 14px 24px;
+  }
+
+  .whatsapp-float {
+    bottom: 18px;
+    left: 18px;
+    width: 52px;
+    height: 52px;
+  }
+}
+
+/* Prevent horizontal scroll from any wide element */
+html,
+body {
+  overflow-x: hidden;
+}

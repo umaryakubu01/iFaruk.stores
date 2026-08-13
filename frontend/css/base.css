@@ -1,0 +1,250 @@
+/* ==========================================================================
+   iFaruk.Stores — Base styles, design tokens, typography
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+:root {
+  /* ---- Color tokens ---- */
+  --color-ink: #121212;              /* near-black, primary text & dark sections */
+  --color-ink-soft: #232320;
+  --color-porcelain: #f6f3ec;        /* main light background */
+  --color-porcelain-deep: #efe9dc;
+  --color-brass: #a9812e;            /* primary luxury accent */
+  --color-brass-light: #c7a45c;
+  --color-brass-pale: #ede1c4;
+  --color-emerald: #1f3b32;          /* secondary accent */
+  --color-line: #ded7c7;             /* hairline border on light bg */
+  --color-line-dark: rgba(246, 243, 236, 0.16);
+  --color-text: #1a1a18;
+  --color-text-muted: #5b564c;
+  --color-text-on-dark: #f6f3ec;
+  --color-text-on-dark-muted: #c9c3b4;
+  --color-danger: #9a3324;
+  --color-success: #2f5d43;
+  --color-warning: #a9812e;
+
+  /* ---- Type ---- */
+  --font-display: "Poppins", sans-serif;
+  --font-body: "Poppins", sans-serif;
+
+  /* ---- Layout ---- */
+  --max-width: 1320px;
+  --radius-sm: 2px;
+  --radius-md: 3px;
+  --header-height: 84px;
+
+  /* ---- Motion ---- */
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --speed-fast: 160ms;
+  --speed-med: 320ms;
+  --speed-slow: 560ms;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 22px;
+  line-height: 1.6;
+  color: var(--color-text);
+  background-color: var(--color-porcelain);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  line-height: 1.12;
+  margin: 0 0 0.5em;
+  color: var(--color-ink);
+  letter-spacing: 0.005em;
+}
+
+h1 {
+  font-size: clamp(2.4rem, 4.5vw, 4rem);
+  font-weight: 600;
+}
+
+h2 {
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  font-weight: 600;
+}
+
+h3 {
+  font-size: clamp(1.4rem, 2.2vw, 1.8rem);
+  font-weight: 600;
+}
+
+h4 {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+p {
+  margin: 0 0 1em;
+  color: var(--color-text);
+}
+
+.lede {
+  font-size: 1.15rem;
+  color: var(--color-text-muted);
+  line-height: 1.7;
+}
+
+/* ---- Utility layout ---- */
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.section {
+  padding: 96px 0;
+}
+
+.section--tight {
+  padding: 56px 0;
+}
+
+.section--dark {
+  background: var(--color-ink);
+  color: var(--color-text-on-dark);
+}
+
+.section--dark h1,
+.section--dark h2,
+.section--dark h3,
+.section--dark h4 {
+  color: var(--color-text-on-dark);
+}
+
+.section--dark p {
+  color: var(--color-text-on-dark-muted);
+}
+
+.section--porcelain-deep {
+  background: var(--color-porcelain-deep);
+}
+
+.kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-brass);
+  margin-bottom: 18px;
+}
+
+.kicker::before {
+  content: "";
+  width: 26px;
+  height: 1px;
+  background: var(--color-brass);
+  display: inline-block;
+}
+
+.hairline {
+  border: none;
+  border-top: 1px solid var(--color-line);
+  margin: 0;
+}
+
+.section--dark .hairline {
+  border-top-color: var(--color-line-dark);
+}
+
+.text-center {
+  text-align: center;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: absolute;
+  left: 12px;
+  top: -60px;
+  background: var(--color-ink);
+  color: var(--color-porcelain);
+  padding: 12px 20px;
+  z-index: 200;
+  border-radius: var(--radius-sm);
+  transition: top var(--speed-fast) var(--ease);
+}
+
+.skip-link:focus {
+  top: 12px;
+}
+
+/* Visible, accessible focus states everywhere */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--color-brass);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

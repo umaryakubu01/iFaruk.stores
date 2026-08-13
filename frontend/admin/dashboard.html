@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard — iFaruk.Stores Admin</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="../css/components.css">
+<link rel="stylesheet" href="../css/admin.css">
+</head>
+<body class="admin-body">
+
+<div class="admin-shell">
+  <aside class="admin-sidebar">
+    <div class="admin-sidebar__brand">iFaruk<span>.Stores</span></div>
+    <nav class="admin-nav" aria-label="Admin navigation">
+      <a href="dashboard.html" aria-current="page">Dashboard</a>
+      <a href="products.html">Products</a>
+      <a href="categories.html">Categories</a>
+      <a href="orders.html">Orders</a>
+    </nav>
+    <div class="admin-sidebar__footer">
+      <p class="admin-sidebar__admin-name">Signed in as <span data-admin-name>—</span></p>
+      <button type="button" class="btn btn-secondary btn-sm btn-block" data-admin-logout>Log Out</button>
+    </div>
+  </aside>
+
+  <main class="admin-main">
+    <div class="admin-topbar">
+      <h1>Dashboard</h1>
+      <a href="../index.html" class="btn btn-secondary btn-sm" target="_blank">View Store</a>
+    </div>
+
+    <div class="stat-grid" data-stat-grid></div>
+
+    <div class="admin-panel">
+      <div class="admin-panel__header">
+        <h3>Recent Orders</h3>
+        <a href="orders.html" class="btn btn-secondary btn-sm">View All Orders</a>
+      </div>
+      <div data-recent-orders></div>
+    </div>
+  </main>
+</div>
+
+<div id="toast-region"></div>
+
+<script src="../js/config.js"></script>
+<script src="../js/api.js"></script>
+<script src="../js/main.js"></script>
+<script src="../js/admin/admin-common.js"></script>
+<script src="../js/admin/dashboard.js"></script>
+</body>
+</html>
