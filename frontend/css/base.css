@@ -169,7 +169,7 @@ p {
   align-items: center;
   gap: 10px;
   font-family: var(--font-body);
-  font-size: 0.8rem;
+  font-size: 12px;
   font-weight: 500;
   letter-spacing: 0.22em;
   text-transform: uppercase;
