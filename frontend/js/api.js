@@ -10,7 +10,7 @@ const API = (() => {
   // relative "/api" paths work automatically. If you serve the frontend
   // separately (e.g. Live Server on another port), change API_BASE_URL
   // to the full backend URL, e.g. "http://localhost:5000/api".
-  const API_BASE_URL = "http://localhost:5000/api";
+  const API_BASE_URL = "https://ifaruk-stores-api.onrender.com";
   const TOKEN_KEY = "ifaruk_admin_token";
   const ADMIN_KEY = "ifaruk_admin_profile";
 
