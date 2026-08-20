@@ -52,7 +52,9 @@ body.admin-body {
   height: 100vh;
   overflow-y: auto;
 }
-
+.btn.btn-secondary.btn-sm.btn-block{
+  display:flex
+}
 .admin-sidebar__brand {
   font-family: var(--font-display);
   font-size: 1.4rem;
