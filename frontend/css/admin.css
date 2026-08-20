@@ -53,7 +53,7 @@ body.admin-body {
   overflow-y: auto;
 }
 .btn.btn-secondary.btn-sm.btn-block{
-  display:flex
+  display:flex;
 }
 .admin-sidebar__brand {
   font-family: var(--font-display);
