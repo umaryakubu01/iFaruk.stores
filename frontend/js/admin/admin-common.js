@@ -35,3 +35,51 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
+function openConfirmModal(title, message, onConfirm) {
+  const overlay = document.querySelector("[data-confirm-modal]");
+  const titleEl = document.querySelector("[data-confirm-title]");
+  const messageEl = document.querySelector("[data-confirm-message]");
+  const yesBtn = document.querySelector("[data-confirm-yes]");
+  const noBtn = document.querySelector("[data-confirm-no]");
+
+  if (!overlay || !titleEl || !messageEl || !yesBtn || !noBtn) {
+    console.error("Confirmation modal elements not found.");
+    return;
+  }
+
+  titleEl.textContent = title;
+  messageEl.textContent = message;
+
+  overlay.hidden = false;
+  document.body.style.overflow = "hidden";
+
+  const closeModal = () => {
+    overlay.hidden = true;
+    document.body.style.overflow = "";
+    yesBtn.onclick = null;
+    noBtn.onclick = null;
+  };
+
+  noBtn.onclick = closeModal;
+
+  yesBtn.onclick = async () => {
+    yesBtn.disabled = true;
+    yesBtn.textContent = "Deleting...";
+
+    try {
+      await onConfirm();
+      closeModal();
+    } catch (error) {
+      console.error(error);
+    } finally {
+      yesBtn.disabled = false;
+      yesBtn.textContent = "Confirm";
+    }
+  };
+
+  overlay.onclick = (event) => {
+    if (event.target === overlay) {
+      closeModal();
+    }
+  };
+}

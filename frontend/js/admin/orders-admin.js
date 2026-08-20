@@ -179,7 +179,7 @@ function openOrderDetailModal(order) {
         showToast("Order status updated", "success");
         closeOrderDetailModal();
         fetchAndRenderOrders();
-      } catch (error) {
+      } catch (error) { 
         showToast(error.message, "error");
         btn.disabled = false;
         btn.textContent = "Update Status";
