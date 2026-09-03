@@ -6,10 +6,6 @@
  */
 
 const API = (() => {
-  // When the frontend is served by the Express server itself (npm start),
-  // relative "/api" paths work automatically. If you serve the frontend
-  // separately (e.g. Live Server on another port), change API_BASE_URL
-  // to the full backend URL, e.g. "http://localhost:5000/api".
   const API_BASE_URL = "https://ifaruk-stores-api.onrender.com/api";
   const TOKEN_KEY = "ifaruk_admin_token";
   const ADMIN_KEY = "ifaruk_admin_profile";
@@ -53,7 +49,7 @@ const API = (() => {
       });
     } catch (networkError) {
       throw new Error(
-        "Unable to reach the server. Please check your connection and try again."
+        "Unable to reach the server. Please check your connection and try again.",
       );
     }
 
@@ -65,7 +61,8 @@ const API = (() => {
     }
 
     if (!response.ok) {
-      const message = (data && data.message) || "Something went wrong. Please try again.";
+      const message =
+        (data && data.message) || "Something went wrong. Please try again.";
       const error = new Error(message);
       error.status = response.status;
       throw error;
@@ -93,7 +90,7 @@ const API = (() => {
         });
       } catch (networkError) {
         throw new Error(
-          "Unable to reach the server. Please check your connection and try again."
+          "Unable to reach the server. Please check your connection and try again.",
         );
       }
 
@@ -113,28 +110,37 @@ const API = (() => {
       return data;
     },
 
-    createProduct: (payload) => request("/products", { method: "POST", body: payload, auth: true }),
+    createProduct: (payload) =>
+      request("/products", { method: "POST", body: payload, auth: true }),
     updateProduct: (id, payload) =>
       request(`/products/${id}`, { method: "PUT", body: payload, auth: true }),
-    deleteProduct: (id) => request(`/products/${id}`, { method: "DELETE", auth: true }),
+    deleteProduct: (id) =>
+      request(`/products/${id}`, { method: "DELETE", auth: true }),
 
     // Categories
     getCategories: () => request("/categories"),
     createCategory: (payload) =>
       request("/categories", { method: "POST", body: payload, auth: true }),
     updateCategory: (id, payload) =>
-      request(`/categories/${id}`, { method: "PUT", body: payload, auth: true }),
-    deleteCategory: (id) => request(`/categories/${id}`, { method: "DELETE", auth: true }),
+      request(`/categories/${id}`, {
+        method: "PUT",
+        body: payload,
+        auth: true,
+      }),
+    deleteCategory: (id) =>
+      request(`/categories/${id}`, { method: "DELETE", auth: true }),
 
     // Orders
-    createOrder: (payload) => request("/orders", { method: "POST", body: payload }),
+    createOrder: (payload) =>
+      request("/orders", { method: "POST", body: payload }),
     getOrders: (query = "") => request(`/orders${query}`, { auth: true }),
     getOrder: (id) => request(`/orders/${id}`, { auth: true }),
     updateOrder: (id, payload) =>
       request(`/orders/${id}`, { method: "PUT", body: payload, auth: true }),
 
     // Auth
-    login: (payload) => request("/auth/login", { method: "POST", body: payload }),
+    login: (payload) =>
+      request("/auth/login", { method: "POST", body: payload }),
     logout: () => request("/auth/logout", { method: "POST", auth: true }),
     getMe: () => request("/auth/me", { auth: true }),
 
